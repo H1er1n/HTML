@@ -3,6 +3,21 @@
 <body style="background: #D6F1E1">
     <head>
     <style> 
+        @media print {
+  body { font-size: 10pt }
+}
+@media screen {
+  body { font-size: 13px }
+}
+@media screen, print {
+  body { line-height: 1.2 }
+}
+@media only screen
+  and (min-device-width: 320px)
+  and (max-device-width: 480px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+    body { line-height: 1.4 }
+}
         body {animation-duration: 3s; animation-name: slidein}
         @keyframes slidein{from {margin-left: 100%;
             width: 300%}
@@ -276,14 +291,3 @@ input[type=submit]:hover {
                                     </section>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
