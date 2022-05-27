@@ -3,18 +3,17 @@
     <head>
         <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-
     <style> 
         @media screen and (min-width:1px) and (max-width:767px){body{background-color: aquamarine; color: blue;line-height: 1.2; font-size: 12px}}
         @media screen and (min-width:768px) and (max-width:2000px){body{background-color: #FDFACF; color: cadetblue;line-height: 1.4;; font-size: 14px}}
         body {animation-duration: 3s; animation-name: slidein}
-       /* @keyframes slidein{from {margin-left: 100%;
+        @keyframes slidein{from {margin-left: 100%;
             width: 300%}
             to{margin-left: 0%; width: 100%}}
         table {
     border-collapse: collapse;
     width: 100%;
-}*/ 
+} 
 
 th, td {
     text-align: center;
@@ -86,7 +85,7 @@ input[type=submit]:hover {
     font-size: 16px;
     resize: none;
 }
-        .button {
+        .open-popup {
   display: inline-block;
   border-radius: 25px;
   background-color: #f4511e;
@@ -101,14 +100,14 @@ input[type=submit]:hover {
   margin: 5px;
 }
 
-.button span {
+.open-popup span {
   cursor: pointer;
   display: inline-block;
   position: relative;
   transition: 0.5s;
 }
 
-.button span:after {
+.open-popup span:after {
   content: '\00bb';
   position: absolute;
   opacity: 0;
@@ -117,14 +116,165 @@ input[type=submit]:hover {
   transition: 0.5s;
 }
 
-.button:hover span {
+.open-popup:hover span {
   padding-right: 25px;
 }
 
-.button:hover span:after {
+.open-popup:hover span:after {
   opacity: 1;
   right: 0;
 }
+
+.popup__bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0,0,0,0.5);
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.5s all;
+}
+
+.popup__bg.active {
+    opacity: 1;
+    pointer-events: all;
+    transition: 0.5s all;
+}
+
+.popup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    background: #fff;
+    width: 400px;
+    padding: 25px;
+    transition: 0.5s all;
+}
+
+.popup.active {
+    transform: translate(-50%, -50%) scale(1);
+    transition: 0.5s all;
+}
+
+.close-popup {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+        section1{
+             width: 500px;
+             height: 300px;
+             border: 1px dashed Gray;
+             padding: 100px 30%;
+            display: grid;
+        }
+        
+.slider{
+    max-width: 90%;
+    position: relative;
+    margin: auto;
+    height: 300px;
+    margin-bottom: 15px;
+}
+
+.slider .item img {
+    object-fit: cover;
+    width: 100%;
+    height: 300px;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.slider .prev, .slider .next {
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    top: 50%;
+    width: auto;
+    margin-top: -22px;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+}
+.slider .next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.slider .prev:hover,
+.slider .next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.slideText {
+    position: absolute;
+    color: #fff;
+    font-size: 35px;
+
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    /* Тень*/
+    text-shadow: 1px 1px 1px #000, 0 0 1em #000;
+}
+
+.slider-dots {
+    text-align: center;
+}
+.slider-dots_item{
+    cursor: pointer;
+    height: 12px;
+    width: 12px;
+    margin: 0 2px;
+    background-color: #ddd;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+.active,
+.slider-dots_item:hover {
+    background-color: #aaa;
+}
+
+.slider .item {
+    -webkit-animation-name: fade;
+    -webkit-animation-duration: 1.5s;
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+@-webkit-keyframes fade {
+    from {
+        opacity: .4
+    }
+    to {
+        opacity: 1
+    }
+}
+@keyframes fade {
+    from {
+        opacity: .4
+    }
+    to {
+        opacity: 1
+    }
+}
+
+        #app {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+
+        #app > h1 {
+            grid-column: span 3;
+        }
+
     </style>
         </head>
     <body>
@@ -183,19 +333,137 @@ input[type=submit]:hover {
         <img src="https://pa1.narvii.com/6504/b8929b89d85d1962f97709d2a6e46b8d9c960fd7_hq.gif" id="mirror">
                     </section>
                     <section style="padding: 100px; font-family: serif">
-    <form action="file:///C:/Users/nazva/Desktop/sd/page.html"> 
+    <form> 
         <fieldset id="bord" style="background-color: #397C90; width: 50%; text-align: left">
             <legend>Your information</legend>
-       <p>Name:<br><input type="text"></p>
-        <p>E-mail:<br><input type="text"></p>
-        <textarea cols="30px" rows="10px">Напиши что-нибудь</textarea>
+       <p>Name:<br><input type="text" name="name"></p>
+        <p>Phone number:<br><input type="text" value="" class="tel"></p>
+        <textarea type="text" name="comment" cols="30px" rows="10px">     </textarea>
             <br>
             
         <input type="submit" name="Отправить">
         
             </fieldset>
     </form>
+                        <script>
+                            window.addEventListener("DOMContentLoaded", function() {
+    [].forEach.call( document.querySelectorAll('.tel'), function(input) {
+    var keyCode;
+    function mask(event) {
+        event.keyCode && (keyCode = event.keyCode);
+        var pos = this.selectionStart;
+        if (pos < 3) event.preventDefault();
+        var matrix = "+7 (___) ___ ____",
+            i = 0,
+            def = matrix.replace(/\D/g, ""),
+            val = this.value.replace(/\D/g, ""),
+            new_value = matrix.replace(/[_\d]/g, function(a) {
+                return i < val.length ? val.charAt(i++) || def.charAt(i) : a
+            });
+        i = new_value.indexOf("_");
+        if (i != -1) {
+            i < 5 && (i = 3);
+            new_value = new_value.slice(0, i)
+        }
+        var reg = matrix.substr(0, this.value.length).replace(/_+/g,
+            function(a) {
+                return "\\d{1," + a.length + "}"
+            }).replace(/[+()]/g, "\\$&");
+        reg = new RegExp("^" + reg + "$");
+        if (!reg.test(this.value) || this.value.length < 5 || keyCode > 47 && keyCode < 58) this.value = new_value;
+        if (event.type == "blur" && this.value.length < 5)  this.value = ""
+    }
+
+    input.addEventListener("input", mask, false);
+    input.addEventListener("focus", mask, false);
+    input.addEventListener("blur", mask, false);
+    input.addEventListener("keydown", mask, false)
+
+  });
+
+});
+                        </script>
                         </section>
+        <section>
+  <h1 >Слайдер</h1>
+
+  <div class="slider">
+    <div class="item">
+       <a  id="show"><img src="https://img3.goodfon.ru/original/1440x900/2/c5/wanaka-new-zealand-ozero.jpg" alt="Первый слайд"></a><dialog><img src="https://img3.goodfon.ru/original/1440x900/2/c5/wanaka-new-zealand-ozero.jpg"><button id="close">x</button></dialog>
+        <div class="slideText">картинка 1</div>
+    </div>
+
+    <div class="item">
+         <a  id="show"><img src="https://wallbox.ru/wallpapers/main/201405/d32f1129d87c9ab.jpg" alt="Второй слайд"></a><dialog><img src="https://wallbox.ru/wallpapers/main/201405/d32f1129d87c9ab.jpg"><button id="close">x</button></dialog>
+        <div class="slideText">картинка 2</div>
+    </div>
+
+    <div class="item">
+         <a id="show"><img src="https://rare-gallery.com/thumbs/348485-4k-wallpaper.jpg" alt="Третий слайд"></a><dialog><img src="https://rare-gallery.com/thumbs/348485-4k-wallpaper.jpg"><button id="close">x</button></dialog>
+        <div class="slideText">картинка 3</div>
+    </div>
+
+    <a class="prev" onclick="minusSlide()">&#10094;</a>
+    <a class="next" onclick="plusSlide()">&#10095;</a>
+</div>
+            
+<div class="slider-dots">
+    <span class="slider-dots_item" onclick="currentSlide(1)"></span> 
+    <span class="slider-dots_item" onclick="currentSlide(2)"></span> 
+    <span class="slider-dots_item" onclick="currentSlide(3)"></span> 
+</div>
+            </section>  
+        <script>
+                var dialog = document.querySelector('dialog');
+                document.querySelector('#show').onclick = function() {
+  dialog.showModal();
+};
+document.querySelector('#close').onclick = function() {
+  dialog.close();
+};
+            </script>
+     <script>
+   /* Индекс слайда по умолчанию */
+var slideIndex = 1;
+showSlides(slideIndex);
+
+/* Функция увеличивает индекс на 1, показывает следующй слайд*/
+function plusSlide() {
+    showSlides(slideIndex += 1);
+}
+
+/* Функция уменьшяет индекс на 1, показывает предыдущий слайд*/
+function minusSlide() {
+    showSlides(slideIndex -= 1);  
+}
+
+/* Устанавливает текущий слайд */
+function currentSlide(n) {
+    showSlides(slideIndex = n);
+}
+
+/* Основная функция слайдера */
+function showSlides(n) {
+    var i;
+    var slides = document.getElementsByClassName("item");
+    var dots = document.getElementsByClassName("slider-dots_item");
+    if (n > slides.length) {
+      slideIndex = 1
+    }
+    if (n < 1) {
+        slideIndex = slides.length
+    }
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+    for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex - 1].style.display = "block";
+    dots[slideIndex - 1].className += " active";
+}
+  </script>
+  
                         <section>
     <table border=5>
     <tr>
@@ -272,23 +540,99 @@ input[type=submit]:hover {
         </tr>
     </table>
                             </section>
-                            <section>
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/cyuzt1Dp8X8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                <button class="button" style="vertical-align:middle"><span>YouTube</span></button>
-                                </section>
-                                <section>
+        <div >
+        <button class="open-popup" onclick="console.log('Открываем видео с ютуб')"><span>YouTube</span></button>
+        </div>
+        <div class="popup__bg">
+                            <div class="popup" id="bord" style="background-color: black; width: 50%; height: 50%;">
+        <img src="image/close.png" class="close-popup">
+        <iframe width="90%" height="100%" src="https://www.youtube.com/embed/cyuzt1Dp8X8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            </div>
+        <script>
+       let popupBg = document.querySelector('.popup__bg');
+let popup = document.querySelector('.popup');
+let openPopupButtons = document.querySelectorAll('.open-popup');
+let closePopupButton = document.querySelector('.close-popup');
+
+openPopupButtons.forEach((button) => {
+    button.addEventListener('click', (e) => {
+        e.preventDefault();
+        popupBg.classList.add('active');
+        popup.classList.add('active');
+    })
+});
+
+closePopupButton.addEventListener('click',() => {
+    popupBg.classList.remove('active');
+    popup.classList.remove('active');
+});
+
+document.addEventListener('click', (e) => {
+    if(e.target === popupBg) {
+        popupBg.classList.remove('active');
+        popup.classList.remove('active');
+    }
+});
+        </script>
+        
+
+                                <section style="padding: 30px">
     <br><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2441.4824575524476!2d104.25908325133551!3d52.27094257966847!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5da824a8ee4f155d%3A0x368423aaef9b2b13!2z0JjRgNC60YPRgtGB0LrQuNC5INCz0L7RgdGD0LTQsNGA0YHRgtCy0LXQvdC90YvQuSDRg9C90LjQstC10YDRgdC40YLQtdGCINC_0YPRgtC10Lkg0YHQvtC-0LHRidC10L3QuNGP!5e0!3m2!1sru!2sru!4v1649069696070!5m2!1sru!2sru" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                                     </section>
+                                    
+        <section1 id="newButton">
+            
+       <button id="newButton"  onclick="console.log('Меняем цвет секции')" class="open-popup"><span>Нажми меня</span></button>
+            
+             </section1>
+<script>
+let ewButton = document.getElementById('newButton');
+    ewButton.onclick = function() {
+    if (this.style.backgroundColor == "") this.style.backgroundColor = "green";
+    else this.style.backgroundColor = ""};
+</script>
+        <section style="padding: 60px">
+         <div id="app">
+
+        <h1 class="p-3">Генератор QRCode</h1>
+
+        <div class="text">
+            <form>
+                <fieldset id="bord" style="background-color: #397C90; width: auto; height: auto; text-align: left">
+                <div class="form-group mx-3 my-3">
+                    <label for="qrCodeText">Введите текст в поле:</label><br />
+                    <textarea id="qrCodeText" class="form-control" rows="6"></textarea>
+                </div>
+                <div class="form-group  mx-3 my-3">
+                    <input type="button"  class="btn btn-primary" value="Generate" id="generateQRCode">
+                </div>
+                    </fieldset>
+            </form>
+        </div>
+
+        <div id="qrCodeOutput" class="text-center">
+            Здесь будет сгенерированный QR-код
+        </div>
+
+    </div>
+    <script src="http://cosmic.mearie.org/2011/01/qrjs/qr.js"></script>
+    <script>
+        const el = (selector) => document.querySelector(selector);
+
+        el('#generateQRCode').addEventListener('click', function() { 
+
+            let qrCodeOutput = el('#qrCodeOutput');
+
+            
+            let text = el('#qrCodeText').value;
+
+            qrCodeOutput.innerHTML = "";
+
+            qrCodeOutput.append(QRCode.generateHTML(text, {}))
+        });
+
+    </script>   
+            </section>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
