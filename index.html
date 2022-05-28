@@ -131,7 +131,7 @@ input[type=submit]:hover {
     left: 0;
     width: 100%;
     height: 100vh;
-    background: rgba(0,0,0,0.5);
+    background: rgba(1,10,110,0.5) ;
     opacity: 0;
     pointer-events: none;
     transition: 0.5s all;
@@ -265,14 +265,6 @@ input[type=submit]:hover {
     }
 }
 
-        #app {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-        }
-
-        #app > h1 {
-            grid-column: span 3;
-        }
 
     </style>
         </head>
@@ -388,17 +380,17 @@ input[type=submit]:hover {
 
   <div class="slider">
     <div class="item">
-       <a  id="show"><img src="https://img3.goodfon.ru/original/1440x900/2/c5/wanaka-new-zealand-ozero.jpg" alt="Первый слайд"></a><dialog><img src="https://img3.goodfon.ru/original/1440x900/2/c5/wanaka-new-zealand-ozero.jpg"><button id="close">x</button></dialog>
+       <img  id="show" src="https://img3.goodfon.ru/original/1440x900/2/c5/wanaka-new-zealand-ozero.jpg" alt="Первый слайд"><dialog><img src="https://img3.goodfon.ru/original/1440x900/2/c5/wanaka-new-zealand-ozero.jpg"><button id="close">x</button></dialog>
         <div class="slideText">картинка 1</div>
     </div>
 
     <div class="item">
-         <a  id="show"><img src="https://wallbox.ru/wallpapers/main/201405/d32f1129d87c9ab.jpg" alt="Второй слайд"></a><dialog><img src="https://wallbox.ru/wallpapers/main/201405/d32f1129d87c9ab.jpg"><button id="close">x</button></dialog>
+         <img  id="show" src="https://wallbox.ru/wallpapers/main/201405/d32f1129d87c9ab.jpg" alt="Второй слайд"><dialog><img src="https://wallbox.ru/wallpapers/main/201405/d32f1129d87c9ab.jpg"><button id="close">x</button></dialog>
         <div class="slideText">картинка 2</div>
     </div>
 
     <div class="item">
-         <a id="show"><img src="https://rare-gallery.com/thumbs/348485-4k-wallpaper.jpg" alt="Третий слайд"></a><dialog><img src="https://rare-gallery.com/thumbs/348485-4k-wallpaper.jpg"><button id="close">x</button></dialog>
+         <img id="show" src="https://rare-gallery.com/thumbs/348485-4k-wallpaper.jpg" alt="Третий слайд"><dialog><img src="https://rare-gallery.com/thumbs/348485-4k-wallpaper.jpg"><button id="close">x</button></dialog>
         <div class="slideText">картинка 3</div>
     </div>
 
@@ -413,13 +405,14 @@ input[type=submit]:hover {
 </div>
             </section>  
         <script>
-                var dialog = document.querySelector('dialog');
+                let dialog = document.querySelector('dialog');
                 document.querySelector('#show').onclick = function() {
   dialog.showModal();
 };
 document.querySelector('#close').onclick = function() {
   dialog.close();
 };
+            
             </script>
      <script>
    /* Индекс слайда по умолчанию */
@@ -461,6 +454,7 @@ function showSlides(n) {
     slides[slideIndex - 1].style.display = "block";
     dots[slideIndex - 1].className += " active";
 }
+                
   </script>
   
                         <section>
@@ -543,7 +537,7 @@ function showSlides(n) {
         <button class="open-popup" onclick="console.log('Открываем видео с ютуб')"><span>YouTube</span></button>
         </div>
         <div class="popup__bg">
-                            <div class="popup" id="bord" style="background-color: black; width: 50%; height: 50%;">
+                            <div class="popup"  style="background-color: black; width: 50%; height: 50%;">
         <img src="https://static.vecteezy.com/system/resources/previews/000/440/249/original/vector-cancel-icon.jpg" style ="height: 36px; width: 36px" class="close-popup">
         <iframe width="90%" height="100%" src="https://www.youtube.com/embed/cyuzt1Dp8X8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
@@ -592,46 +586,19 @@ let ewButton = document.getElementById('newButton');
     else this.style.backgroundColor = ""};
 </script>
         <section style="padding: 60px">
-         <div id="app">
 
         <h1 class="p-3">Генератор QRCode</h1>
 
-        <div class="text">
-            <form>
-                <fieldset id="bord" style="background-color: #397C90; width: auto; height: auto; text-align: left">
-                <div class="form-group mx-3 my-3">
-                    <label for="qrCodeText">Введите текст в поле:</label><br />
-                    <textarea id="qrCodeText" class="form-control" rows="6"></textarea>
-                </div>
-                <div class="form-group  mx-3 my-3">
-                    <input type="button"  class="btn btn-primary" value="Generate" id="generateQRCode">
-                </div>
-                    </fieldset>
-            </form>
-        </div>
+        <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+<div id="qrcode"></div>
+<script type="text/javascript">
+let now = new Date();
+let hour = now.getHours();
+let minute = now.getMinutes();
+let second = now.getSeconds();
 
-        <div id="qrCodeOutput" class="text-center">
-            Здесь будет сгенерированный QR-код
-        </div>
-
-    </div>
-    <script src="http://cosmic.mearie.org/2011/01/qrjs/qr.js"></script>
-    <script>
-        const el = (selector) => document.querySelector(selector);
-
-        el('#generateQRCode').addEventListener('click', function() { 
-
-            let qrCodeOutput = el('#qrCodeOutput');
-
-            
-            let text = el('#qrCodeText').value;
-
-            qrCodeOutput.innerHTML = "";
-
-            qrCodeOutput.append(QRCode.generateHTML(text, {}))
-        });
-
-    </script>   
+new QRCode(document.getElementById("qrcode"), "Названова Полина Олеговна", now);
+</script>
             </section>
 </body>
 </html>
