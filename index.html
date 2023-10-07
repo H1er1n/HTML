@@ -7,18 +7,34 @@
         <title>Информация о специальности программная инженерия</title>
     </head>
     <style>
-         @media screen and (min-width:1px) and (max-width:767px){body{color: black;line-height: 1.2; font-size: 15px}}
-         @media screen and (min-width:768px) and (max-width:2000px){body{color: black;line-height: 1.4;; font-size: 20px}}
+        body{
+            font-size: 20px;
+        }
         .otz{
             border-style: solid;
             border-radius: 10px;
             padding: 15px;
             margin: 10px;
-            background-color: cadetblue;
-            transition-property: 50%;
-            display: flex;
-            flex-direction: column-reverse;
+            box-shadow: 0 0 10px cadetblue;
+            max-width: 250px;
+            min-height: 600px;
+            margin-left: auto;
+            margin-right: auto;
+       
         }
+        .box{
+           border-style: solid;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px;
+            background-color: rgb(117 190 218 / 0.3);  
+        }
+        .polgotz{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            flex-wrap: wrap;
+        }   
         main{
             margin-left: 15pt;
             margin-right: 15pt;
@@ -28,11 +44,43 @@
             margin: 10px;
             display: block;
         }
+        .kart{
+        width: 90px;
+        height: 90px;
+        }
+        .map{
+            width: 600px;
+            height: 600px;
+            border-radius: 10px;
+        }
+         @media screen and (min-width:1px) and (max-width:767px){body{color: black;line-height: 1.2; font-size: 15px;}
+           .otz{
+            border-style: solid;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px;
+            box-shadow: 0 0 10px cadetblue;
+            max-width: 250px;
+            min-height: 350px;
+            margin-left: auto;
+            margin-right: auto;}
+              .kart{
+        width: 40px;
+        height: 40px;
+        }
+        .map{
+            width: 300px;
+            height: 300px;
+            border-radius: 10px;
+        }
+        }
+        
     </style>
     <body>
          <main>
-        <header><h1>Программы высшего образования</h1></header>
+        <header class="blocks"><h1>Программы высшего образования</h1></header>
         <article>
+            <div class="box">
             <div class="blocks">
             <section>
             <header><h2>Программная иненерия</h2></header>
@@ -57,6 +105,7 @@
             </p>
             </section>
             </div>
+            </div>
              <div class="blocks">
         <section>
             <h3>Почему стоит выбрать именно эту специальность?</h3>
@@ -70,32 +119,59 @@
             </ul>
         </section>
             </div>
+              <div class="blocks">
         <section>
+            <h3>Какие минимальные требования к баллам ЕГЭ?</h3>
+            <ul> 
+            <li>Русский язык - 36 баллов</li>
+            <li>Математика (профиль) - 27 баллов</li>
+            <li>Информатика и ИКТ - 40 баллов или</li>
+            <li>Физика - 36 баллов</li>  
+            </ul>
+        </section>
+            </div>
+        <section class="blocks">
         <h4>Отзывы выпускников</h4>
+            <div class="polgotz">
             <div class="otz">
+                <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="kart"> 
                 <p>
-                "Иркутский государственный университет путей сообщения всегда идет в ногу со временем: здесь постоянно создаются новые специальности и факультеты, открываются современные центры и лаборатории. Сегодня на Восточно-Сибирской железной дороге нет ни одного подразделения, где не трудились бы выпускники ИрГУПС. Наш опыт показывает, что студенты университета вчера – это высококвалифицированные специалисты сегодня."
+                "Иркутский государственный университет путей сообщения всегда идет в ногу со временем: здесь постоянно создаются новые специальности и факультеты, открываются современные центры и лаборатории. Сегодня на Восточно-Сибирской железной дороге нет ни одного подразделения, где не трудились бы выпускники ИрГУПС. Наш опыт показывает, что студенты университета вчера – это квалифицированные специалисты сегодня."
                 </p>
                 Вадим Владимиров
             </div>  
             <div class="otz">
+                <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="kart"> 
                 <p>
                 "Иркутский государственный университет путей сообщения – это отличное сочетание традиций и успешного развития в области науки. Университет прогрессирует с каждым годом и никогда не стоит на месте.
-                Главным приоритетом в работе ИрГУПС были и остаются высокое качество обучения, подготовка высококвалифицированных специалистов и плодотворная научно-исследовательская деятельность." 
+                Главным приоритетом в работе ИрГУПС были и остаются высокое качество обучения, подготовка квалифицированных специалистов и плодотворная научно-исследовательская деятельность." 
                 </p>
                 Сергей Черногаев
             </div>
             <div class="otz">
+                <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="kart"> 
                 <p>
                 "Иркутский государственный университет путей сообщения на протяжении многих лет является одним из ведущих транспортных вузов России. Учебное заведение и его филиалы всегда отличал высочайший уровень профессорско-преподавательского состава и мощная, постоянно обновляемая лабораторная база." 
                 </p>
                 Владимир Антонец
             </div>
+            <div class="otz">
+               <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="kart"> 
+                <p>
+                "Иркутский государственный университет путей сообщения всегда идет в ногу со временем: здесь постоянно создаются новые специальности и факультеты, открываются современные центры и лаборатории. Сегодня на Восточно-Сибирской железной дороге нет ни одного подразделения, где не трудились бы выпускники ИрГУПС. Наш опыт показывает, что студенты университета вчера – это квалифицированные специалисты сегодня."
+                </p>
+                Вадим Владимиров
+            </div>  
+             </div>
         </section>
                </article>
     </main>
             <footer>
+            <div class="box">
             <p>Узнать подробнее можно по <a href="https://www.irgups.ru">ссылке</a></p>
+            <p>Найти нас можно тут</p>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2441.4824575524476!2d104.25908325133551!3d52.27094257966847!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5da824a8ee4f155d%3A0x368423aaef9b2b13!2z0JjRgNC60YPRgtGB0LrQuNC5INCz0L7RgdGD0LTQsNGA0YHRgtCy0LXQvdC90YvQuSDRg9C90LjQstC10YDRgdC40YLQtdGCINC_0YPRgtC10Lkg0YHQvtC-0LHRidC10L3QuNGP!5e0!3m2!1sru!2sru!4v1649069696070!5m2!1sru!2sru" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="map"></iframe>
+            </div>
             </footer>
     </body>
 </html>
